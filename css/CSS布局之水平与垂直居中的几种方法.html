@@ -1,0 +1,116 @@
+<html>
+<head>
+    <title>CSS布局之水平与垂直居中的几种方法</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+    body{
+        width:900px;
+        margin:0px auto;
+        font-size: 14px;
+    }
+    h1 {
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+    }
+    .demo{
+        display: table-cell;
+        width: 900px;
+        background: #ccc;
+        height: 300px;
+        text-align: center;
+        vertical-align:middle;
+    }
+    .demo div{
+        display: inline-block;
+        width: 400px;
+        height: 200px;
+        background: #abcdef;
+    }
+    section , article{
+        margin: 20px 0px;
+        background: #ccc;
+        padding: 10px 0;
+        text-indent: 20px;
+    }
+    article div{
+        margin: 10px 30px;
+        background: #999;
+        padding: 10px 0;
+        border-radius: 10px;
+        font-size: 14px; 
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CSS布局之水平与垂直居中几种方法</h1>
+    </header>
+    <section class="demo">
+        parent
+        <div>child</div>
+    </section>    
+    <article>
+        <header>方式一： inline-block + text-align + table-cell + vertical-align</header>
+        <div>
+            <pre>
+        &lt;div class="parent"&gt;
+              &lt;div class="child"&gt;Demo&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;style&gt;
+              .parent {
+                text-align: center;
+                display: table-cell;
+                vertical-align: middle;
+              }
+              .child {
+                display: inline-block;
+              }
+            &lt;/style&gt;
+            </pre>
+        </div>
+        <footer>优点：兼容性好</footer>
+    </article>
+    <article>
+        <header>方式二： absolute + transform</header>
+        <div>
+            <pre>
+        &lt;div class="parent"&gt;
+              &lt;div class="child"&gt;Demo&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;style&gt;
+              .parent {
+                position: relative;
+              }
+              .child {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+              }
+            &lt;/style&gt;
+            </pre>
+        </div>
+        <footer>优点：绝对定位脱离文档流，不会对后续元素的布局造成影响。 缺点：transform 为 CSS3 属性，有兼容性问题</footer>
+    </article>
+    <article>
+        <header>方式三： flex + justify-content + align-items</header>
+        <div>
+            <pre>
+        &lt;div class="parent"&gt;
+              &lt;div class="child"&gt;Demo&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;style&gt;
+              .parent {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+            &lt;/style&gt;
+            </pre>
+        </div>
+        <footer>优点：只需设置父节点属性，无需设置子元素。 缺点：有兼容性问题</footer>
+    </article>。
+
+</body>
+</html>
